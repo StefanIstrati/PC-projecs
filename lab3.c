@@ -32,8 +32,8 @@ void Sort(int arr[], int low, int high)
 }
 void fillMatrix(int **arr2, int N, int M, int arr[], int row, int col, int k) {
     if (N <= 0 || M <= 0) return;
-
-    for (int i = row ; i < row + N; i++) {
+    int x = (int)(N/2);
+    for (int i = row + x; i < row + N; i++) {
         arr2[i][col + M - 1] = arr[k];
         k++;
     }
@@ -47,6 +47,10 @@ void fillMatrix(int **arr2, int N, int M, int arr[], int row, int col, int k) {
         }
     for (int i = col+1; i < col + M-1; i++) {
         arr2[row][i] = arr[k];
+        k++;
+    }
+    for (int i = row; i < row + x; i++) {
+        arr2[i][col + M - 1] = arr[k];
         k++;
     }
     fillMatrix(arr2, N - 2, M - 2, arr, row + 1, col + 1, k);
